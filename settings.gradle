@@ -13,10 +13,18 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
+    // 如果你希望项目级配置覆盖此设置，可以改为 PREFER_PROJECT
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        // 首要：阿里云镜像 (必须放在最前面)
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
+        
+        // 次要：原始官方仓库（作为备用，以防镜像缺少某些特定版本的构件）
         google()
         mavenCentral()
+        // gradle插件门户
         gradlePluginPortal()
     }
 }
