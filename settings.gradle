@@ -13,11 +13,13 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        maven { url 'https://maven.aliyun.com/repository/public' } // 阿里云镜像
-        maven { url 'https://maven.aliyun.com/repository/google' } // 阿里云Google镜像
-        mavenCentral() // 可保留，作为备用
+        google()
+        mavenCentral()
+        gradlePluginPortal()
     }
 }
+
 rootProject.name = "Sounder-Template"
 include ':app'
