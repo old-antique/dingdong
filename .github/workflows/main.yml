@@ -25,13 +25,8 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      # ========== 替换或修改这里 ==========
-      - name: Clean and Build Release APK
-        run: |
-          ./gradlew clean
-          rm -rf ~/.gradle/caches/   # 深度清理缓存，确保拉取新依赖
-          ./gradlew assembleRelease --refresh-dependencies --scan
-      # ===================================
+      - name: Build Release APK
+        run: ./gradlew assembleRelease --no-daemon
 
       # 只在 push 时发版；PR 时跳过
       - name: Release
