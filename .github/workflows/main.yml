@@ -1,6 +1,7 @@
 name: Android CI
 
 on:
+  workflow_dispatch: # 👈 添加这一行，即可手动触发
   push:
     branches: [ "main" ]
   pull_request:
