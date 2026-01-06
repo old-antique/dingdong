@@ -1,14 +1,3 @@
-// 根 build.gradle 或 settings.gradle 的 pluginManagement 块
-pluginManagement {
-    repositories {
-        // 优先使用镜像
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
-        maven { url 'https://maven.aliyun.com/repository/google/' }
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
