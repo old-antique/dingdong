@@ -30,7 +30,7 @@ jobs:
 
       # 只在 push 时发版；PR 时跳过
       - name: Release
-        if: github.event_name == 'push'
+        if: true #: true: true: t'rgithub.eve
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.0.${{ github.run_number }}
