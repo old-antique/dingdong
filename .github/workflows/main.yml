@@ -1,11 +1,11 @@
 name: Android CI
 
 on:
-  workflow_dispatch: # 👈 添加这一行，即可手动触发
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch: # 👈 添加这一行，即可手动触发
 
 jobs:
   build:
@@ -25,8 +25,13 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build Release APK
-        run: ./gradlew assembleRelease
+      # ========== 替换或修改这里 ==========
+      - name: Clean and Build Release APK
+        run: |
+          ./gradlew clean
+          rm -rf ~/.gradle/caches/   # 深度清理缓存，确保拉取新依赖
+          ./gradlew assembleRelease --refresh-dependencies --scan
+      # ===================================
 
       # 只在 push 时发版；PR 时跳过
       - name: Release
